@@ -66,6 +66,7 @@ def create_sentence_pair(inf,law_inf,stop_inf,outf):
             relevant_articles = line['meta']['relevant_articles']
             ans = []
             for ra in relevant_articles:
+                ra = int(ra)
                 laws[ra-1] = re.sub('（[一二三四五六七八九]）', '', laws[ra - 1])
                 laws[ra-1] = re.sub('[\s+\.\!\/_,$%^*(+\"\')]+|[+——()?【】；《 》：“”！，。？、~@#￥%……&*（）]+', "", laws[ra-1])
                 #laws[ra-1] = re.sub(stops,'',laws[ra-1])
@@ -89,9 +90,9 @@ def create_sentence_pair(inf,law_inf,stop_inf,outf):
 if __name__ == '__main__':
 
     thu = thulac.thulac(seg_only=True)
-    base_dir = '/home/abc/pySpace'
-    inf = base_dir + '/law_match/datasets/gamedatas/example.json'
-    law_inf = base_dir + '/law_match/datasets/clean_xing_law_1.txt'
+    base_dir = '/home/nlp/pySpace'
+    inf = base_dir + '/match_law/datasets/gamedatas/train.json'
+    law_inf = base_dir + '/match_law/datasets/clean_xing_law_1.txt'
     stop_inf = base_dir+'/deep-siamese-text-similarity/datasets/stopwords.txt'
     outf = base_dir+'/deep-siamese-text-similarity/datasets/datas.txt'
     create_sentence_pair(inf,law_inf,stop_inf,outf)
