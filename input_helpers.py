@@ -10,9 +10,9 @@ from gensim.models.word2vec import Word2Vec
 import gzip
 from random import random
 from preprocess import MyVocabularyProcessor
-import sys
-reload(sys)
-sys.setdefaultencoding("utf-8")
+#import sys
+#reload(sys)
+#sys.setdefaultencoding("utf-8")
 
 class InputHelper(object):
     pre_emb = dict()
@@ -208,7 +208,7 @@ class InputHelper(object):
         # Build vocabulary
         vocab_processor = MyVocabularyProcessor(max_document_length,min_frequency=0)
         vocab_processor = vocab_processor.restore(vocab_path)
-        print len(vocab_processor.vocabulary_)
+        print(len(vocab_processor.vocabulary_))
 
         x1 = np.asarray(list(vocab_processor.transform(x1_temp)))
         x2 = np.asarray(list(vocab_processor.transform(x2_temp)))
